@@ -1,3 +1,4 @@
+# Abinet Kenore  HW3  Sep 09,2019 12:00PM MT
 # CS3210 - Principles of Programming Languages - Fall 2019
 # A Lexical Analyzer for an expression
 
@@ -25,8 +26,8 @@ def getChar(input):
     if c.isdigit():
         return (c, CharClass.DIGIT)
     if c == '"':
-        return (c, CharClass.QUOTE)
-    if c in ['+', '-', '*', '/', '>', '=', '<']:
+        return (c, CharClass.QUOTE) # Added ()
+    if c in ['+', '-', '*', '/', '>', '=', '<', '(',')']:
         return (c, CharClass.OPERATOR)
     if c in ['.', ':', ',', ';']:
         return (c, CharClass.PUNCTUATOR)
@@ -59,13 +60,19 @@ class Token(Enum):
     DIV_OP     = 4
     IDENTIFIER = 5
     LITERAL    = 6
+    # Added
+    OPEN_PAR   = 7
+    CLOSE_PAR = 8
 
 # lexeme to token conversion
 lookup = {
     "+"      : Token.ADD_OP,
     "-"      : Token.SUB_OP,
     "*"      : Token.MUL_OP,
-    "/"      : Token.DIV_OP
+    "/"      : Token.DIV_OP,
+    #Added
+    "("      : Token.OPEN_PAR,
+    ")"      : Token.CLOSE_PAR
 }
 
 # returns the next (lexeme, token) pair or None if EOF is reached
@@ -80,8 +87,12 @@ def lex(input):
         return (input, None, None)
 
     # TODO: reading letters
-    if charClass == charClass.LETTER:
-        input, lexeme = addChar(input, lexeme)
+    if charClass == charClass.LETTER: # Modified
+        while True:
+             input,lexeme = addChar(input, lexeme)
+             c, charClass = getChar(input)
+             if charClass != charClass.DIGIT  and charClass != charClass.LETTER:
+                 break
         return(input, lexeme, Token.IDENTIFIER)
 
     # TODO: reading digits
@@ -100,7 +111,7 @@ def lex(input):
             return (input,lexeme,lookup[lexeme])
 
     # TODO: anything else, raise an exception
-    raise Exception("Lexical Analyzer Error: unrecognized operator found")
+    raise Exception("LA Not Found")
 
 # main
 if __name__ == "__main__":
