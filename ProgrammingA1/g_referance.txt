@@ -1,0 +1,41 @@
+#The short hand formula for the grammar representation
+<program>=PR
+<identifier>=ID
+<block>=BL
+<var_declaration_section>=VDS
+<var_declaration>=VD
+<type>=TY
+Integer = I
+Boolean = B
+<compound_statement>=CS
+<statement>=S
+<simple_statement>=SS
+<assignment_statement>=AS
+<read_statement>=RS
+<write_statement>=WS
+<structured_statement>=SSS
+<if_statement>=IS
+<while_statemnet>=WHS
+<expression>=E
+<arithmetic_expression>=AE
+<term>=T
+<factor>=F
+<literal>=L
+<integer_literal>=IL
+<boolean_literal>=BLL
+<boolean_expression>=BEP
+<letter>=l
+<digit>=d
+ID-> lt
+
+<boolean_expression> → <boolean_literal> |
+<arithmetic_expression> ( > | >= | = | <= | < )
+<arithmetic_expression>
+
+BE -> true
+BE -> false
+BE -> AE > AE
+BE -> AE >= AE
+
+
+ID ->
