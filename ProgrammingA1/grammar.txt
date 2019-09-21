@@ -1,11 +1,9 @@
 PR -> program id BL .
 BL -> [VDS] CS
 VDS -> var VD;VD
-
 VD -> ID:TY #G5
 ID -> ID'
 ID -> ID':ID
-
 TY -> I
 TY -> B
 CS -> begin S; S end
