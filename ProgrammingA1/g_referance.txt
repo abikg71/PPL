@@ -1,4 +1,4 @@
-#The short hand formula for the grammar representation
+#The short hand representation for the grammar.
 <program>=PR
 <identifier>=ID
 <block>=BL
@@ -26,16 +26,3 @@ Boolean = B
 <boolean_expression>=BEP
 <letter>=l
 <digit>=d
-ID-> lt
-
-<boolean_expression> → <boolean_literal> |
-<arithmetic_expression> ( > | >= | = | <= | < )
-<arithmetic_expression>
-
-BE -> true
-BE -> false
-BE -> AE > AE
-BE -> AE >= AE
-
-
-ID ->

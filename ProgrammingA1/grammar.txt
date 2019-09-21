@@ -1,28 +1,28 @@
 PR -> program id BL .
-ID -> l
+BL -> [VDS] CS
+VDS -> var VD;VD
 
+VD -> ID:TY #G5
+ID -> ID'
+ID -> ID':ID
 
-
-
-TY -> I #G6
+TY -> I
 TY -> B
-#G7
-S -> SS #G8
+CS -> begin S; S end
+S -> SS
 S -> SSS
-SS -> AS #G9
+SS -> AS
 SS -> RS
 SS -> WS
-AS -> ID := E #G10
-RS -> read ID #G11
-WS -> write ID #G12
+AS -> ID := E
+RS -> read ID
+WS -> write ID
 WS -> write L
-SSS -> IF #G13
+SSS -> IF
 SSS -> WHS
 SSS -> CS
-#G14
-IF -> if BEP then S ?
-WHS -> while BEP do S #15
-# Grammar 16 to 23
+IF -> if BEP then S else S
+WHS -> while BEP do S
 E -> AE
 E -> BEP
 AE -> AE + T
@@ -35,11 +35,11 @@ F -> IL
 L -> IL
 L -> BLL
 IL -> d
-BLL -> true
-BLL -> false
 BEP -> BLL
 BEP -> AE > AE
 BEP -> AE >= AE
 BEP -> AE < AE
 BEP -> AE <= AE
 BEP -> AE = AE
+BLL -> true
+BLL -> false
