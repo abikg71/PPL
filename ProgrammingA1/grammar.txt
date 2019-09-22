@@ -28,7 +28,6 @@ SSS -> WHS
 SSS -> CS
 IF -> if BEP then S else S
 WHS -> while BEP do S
-
 E -> AE
 E -> BEP
 AE -> AE + T
