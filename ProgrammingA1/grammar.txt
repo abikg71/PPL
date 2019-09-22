@@ -1,12 +1,19 @@
-PR -> program id BL .
+PR -> PR id BL
+ID -> LD
+LD -> l
+LD -> l LD
 BL -> [VDS] CS
-VDS -> var VD;VD
-VD -> ID:TY #G5
-ID -> ID'
-ID -> ID':ID
+VDS -> var VD'
+VD' -> VD
+VD -> VD;VD'
+VD -> ID':TY
+ID' -> ID
+ID' -> ID ID'
 TY -> I
 TY -> B
-CS -> begin S; S end
+CS -> begin S' end
+S' -> S
+S -> S;S'
 S -> SS
 S -> SSS
 SS -> AS
@@ -21,6 +28,7 @@ SSS -> WHS
 SSS -> CS
 IF -> if BEP then S else S
 WHS -> while BEP do S
+
 E -> AE
 E -> BEP
 AE -> AE + T
