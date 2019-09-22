@@ -1,0 +1,50 @@
+PR -> PR id BL 
+ID -> LD
+LD -> l
+LD -> l LD
+BL -> [VDS] CS
+VDS -> var VD'
+VD' -> VD
+VD -> VD;VD'
+VD -> ID':TY 
+ID' -> ID
+ID' -> ID ID'
+TY -> I
+TY -> B
+CS -> begin S' end
+S' -> S
+S -> S;S'
+S -> SS
+S -> SSS
+SS -> AS
+SS -> RS
+SS -> WS
+AS -> ID := E
+RS -> read ID
+WS -> write ID
+WS -> write L
+SSS -> IF
+SSS -> WHS
+SSS -> CS
+IF -> if BEP then S else S
+WHS -> while BEP do S
+E -> AE
+E -> BEP
+AE -> AE + T
+AE -> AE - T
+AE -> T
+T -> T * F
+T -> F
+F -> ID
+F -> IL
+L -> IL
+L -> BLL
+IL -> d
+BEP -> BLL
+BEP -> AE > AE
+BEP -> AE >= AE
+BEP -> AE < AE
+BEP -> AE <= AE
+BEP -> AE = AE
+BLL -> true
+BLL -> false
