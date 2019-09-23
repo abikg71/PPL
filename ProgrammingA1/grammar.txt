@@ -1,15 +1,12 @@
-PR -> PR ID BL
-ID -> LD
-ID-> l
-LD -> l LD
+PR -> PR id BL
 BL-> CS
 BL -> VDS CS
 VDS -> var VD'
 VD' -> VD
 VD -> VD ; VD'
 VD -> ID' : TY
-ID' -> ID
-ID' -> ID ID'
+ID' -> id
+ID' -> id ID'
 TY -> I
 TY -> B
 CS -> begin S' end
@@ -20,9 +17,9 @@ S -> SSS
 SS -> AS
 SS -> RS
 SS -> WS
-AS -> ID := E
-RS -> read ID
-WS -> write ID
+AS -> id := E
+RS -> read id
+WS -> write id
 WS -> write L
 SSS -> IF
 SSS -> WHS
@@ -37,11 +34,8 @@ AE -> AE - T
 AE -> T
 T -> T * F
 T -> F
-F -> ID
-F -> IL
-L -> IL
-L -> BLL
-IL -> d
+F -> id
+F -> l
 BEP -> BLL
 BEP -> AE > AE
 BEP -> AE >= AE

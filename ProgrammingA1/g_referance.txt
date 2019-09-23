@@ -1,6 +1,6 @@
 #The short hand representation for the grammar.
 <program>=PR
-<identifier>=ID
+<identifier>=id
 <block>=BL
 <var_declaration_section>=VDS
 <var_declaration>=VD
