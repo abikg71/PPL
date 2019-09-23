@@ -1,19 +1,20 @@
 PR -> PR id BL
 ID -> LD
-LD -> l
+i -> l
 LD -> l LD
-BL -> [VDS] CS
+BL-> CS
+BL -> VDS CS
 VDS -> var VD'
 VD' -> VD
-VD -> VD;VD'
-VD -> ID':TY
+VD -> VD ; VD'
+VD -> ID' : TY
 ID' -> ID
 ID' -> ID ID'
 TY -> I
 TY -> B
 CS -> begin S' end
 S' -> S
-S -> S;S'
+S -> S ; S'
 S -> SS
 S -> SSS
 SS -> AS
@@ -26,6 +27,7 @@ WS -> write L
 SSS -> IF
 SSS -> WHS
 SSS -> CS
+IF -> if BEP then S
 IF -> if BEP then S else S
 WHS -> while BEP do S
 E -> AE
