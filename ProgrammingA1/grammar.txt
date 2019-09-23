@@ -1,4 +1,4 @@
-PR -> PR id BL
+PR -> program id BL .
 BL-> CS
 BL -> VDS CS
 VDS -> var VD'
@@ -36,11 +36,13 @@ T -> T * F
 T -> F
 F -> id
 F -> l
-BEP -> BLL
+L -> l
+L -> true
+L -> false
+BEP -> false
+BEP -> true
 BEP -> AE > AE
 BEP -> AE >= AE
 BEP -> AE < AE
 BEP -> AE <= AE
 BEP -> AE = AE
-BLL -> true
-BLL -> false
