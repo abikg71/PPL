@@ -7,8 +7,8 @@ VD -> VD ; VD'
 VD -> ID' : TY
 ID' -> id
 ID' -> id ID'
-TY -> I
-TY -> B
+TY -> Integer
+TY -> Boolean
 CS -> begin S' end
 S' -> S
 S -> S ; S'
@@ -24,7 +24,6 @@ WS -> write L
 SSS -> IF
 SSS -> WHS
 SSS -> CS
-IF -> if BEP then S
 IF -> if BEP then S else S
 WHS -> while BEP do S
 E -> AE
