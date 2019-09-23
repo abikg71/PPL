@@ -1,6 +1,6 @@
-PR -> PR id BL
+PR -> PR ID BL
 ID -> LD
-i -> l
+ID-> l
 LD -> l LD
 BL-> CS
 BL -> VDS CS
