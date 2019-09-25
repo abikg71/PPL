@@ -17,9 +17,9 @@ class CharClass(Enum): # Ask what needs to be added
     OPERATOR   = 4
     PUNCTUATOR = 5
     QUOTE      = 6
-    BUILTIN    = 7
-    BLANK      = 9
-    OTHER      = 9
+    #BUILTIN    = 7
+    BLANK      = 7
+    OTHER      = 8
 
 # Reads the next char from input and returns its class
 def getChar(input):
@@ -37,8 +37,8 @@ def getChar(input):
     if c in ['.', ':', ',', ';']:
         return (c, CharClass.PUNCTUATOR)
 
-    if c in ['do', 'if', 'else', 'begin', 'end','while', 'read', 'write','then','var',]:
-        return (c, CharClass.BUILTIN)
+    # if c in ['do', 'if', 'else', 'begin', 'end','while', 'read', 'write','then','var',]:
+    #     return (c, CharClass.BUILTIN)
 
     if c in [' ', '\n', '\t']:
         return (c, CharClass.BLANK)
@@ -92,15 +92,17 @@ class Token(Enum):
     VAR            = 27
     WHILE          = 28
     WRITE          = 29
+    COMMA          =  30
 
     # lexeme to token conversion
-    lookup = {
+lookup = {
         "+"      : Token.ADDITION,
         "-"      : Token.SUBTRACTION,
         "*"      : Token.MULTIPLICATION,
         "."      : Token.PERIOD,
         ":"      : Token.COLON,
-        ","      : Token.SEMICOLON,
+        ""      : Token.COMMA,
+        ";"      : Token.SEMICOLON,
         ">"      : Token.GREATER,
         ">="     : Token.GREATER_EQUAL,
         "="      : Token.EQUAL,
@@ -140,8 +142,9 @@ class Error(Enum):
 # Returns the next (lexeme, token) pair or None if EOF is reached
 def lex(input):
     input = getNonBlank(input)
-
     c, charClass = getChar(input)
+    # print(c, end = " ")
+    # print(charClass)
     lexeme = ""
 
     # check EOF first
@@ -155,6 +158,8 @@ def lex(input):
              c, charClass = getChar(input)
              if charClass != charClass.DIGIT  and charClass != charClass.LETTER:
                  break
+        if lexeme in lookup:
+            return(input, lexeme, lookup[lexeme])
         return(input, lexeme, Token.IDENTIFIER)
 
     # TODO: reading digits
@@ -164,10 +169,10 @@ def lex(input):
             c, charClass = getChar(input)
             if charClass != charClass.DIGIT:
                 break
-        return (input, lexeme, Token.LITERAL)
+        return (input, lexeme, Token.INTEGER_LITERAL)
 
     # TODO: reading an operator
-    if charClass == charClass.OPERATOR:
+    if charClass == charClass.OPERATOR or charClass == charClass.PUNCTUATOR:
         input, lexeme = addChar(input, lexeme)
         if lexeme in lookup:
             return (input,lexeme,lookup[lexeme])
