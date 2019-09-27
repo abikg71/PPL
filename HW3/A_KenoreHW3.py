@@ -86,7 +86,8 @@ def lex(input):
     if charClass == CharClass.EOF:
         return (input, None, None)
 
-    # TODO: reading letters
+#TODO Write a def for the BUILTIN functions
+    # TODO: reading letters **
     if charClass == charClass.LETTER: # Modified
         while True:
              input,lexeme = addChar(input, lexeme)

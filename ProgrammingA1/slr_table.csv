@@ -1,4 +1,4 @@
-,s,program,id,.,var,;,:,Integer,Boolean,begin,end,:=,read,write,if,then,else,while,do,+,-,*,l,TRUE,FALSE,>,>=,<,<=,=,$,PR,BL,VDS,VD',VD,ID',TY,CS,S',S,SS,AS,RS,WS,SSS,IF,WHS,E,AE,T,F,L,BEP
+s,program,id,.,var,;,:,Integer,Boolean,begin,end,:=,read,write,if,then,else,while,do,+,-,*,l,TRUE,FALSE,>,>=,<,<=,=,$,PR,BL,VDS,VD',VD,ID',TY,CS,S',S,SS,AS,RS,WS,SSS,IF,WHS,E,AE,T,F,L,BEP
 0,s1, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,
 1, ,s2, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,
 2, , , ,s7, , , , ,s6, , , , , , , , , , , , , , , , , , , , , , ,3,5, , , , ,4, , , , , , , , , , , , , , ,

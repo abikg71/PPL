@@ -106,8 +106,6 @@ lookup = {
     }
 
 # Error Table
-class Error(Enum):
-
 def errorMessage(ecode):
     msg = "Error " + str(ecode).zfill(2) + ": "
     if ecode == 1 :
@@ -124,14 +122,14 @@ def errorMessage(ecode):
         return msg + "Identifier expected "
     if ecode == 8:
         return msg + "Special word missing "
-   if ecode == 9:
-       return msg + "Symbol missing "
-   if ecode == 10:
-       return msg + "Data type expected "
+    if ecode == 9:
+        return msg + "Symbol missing "
+    if ecode == 10:
+        return msg + "Data type expected "
     if ecode == 11:
         return msg + "identifier or literal value expected "
     return msg + "Syntax error "
-    
+
 # Returns the next (lexeme, token) pair or None if EOF is reached
 def lex(input):
     input = getNonBlank(input)
@@ -171,17 +169,17 @@ def lex(input):
             return (input,lexeme,lookup[lexeme])
 
     # TODO: anything else, raise an exception
-    raise Exception("LA Not Found")
+    raise Exception(errorMessage(3))
     # Here
 # Main
 if __name__ == "__main__":
 
     # checks if source file was passed and if it exists
     if len(sys.argv) != 2:
-        raise ValueError("Missing source file")
+        raise ValueError(errorMessage(1))
     source = open(sys.argv[1], "rt")
     if not source:
-        raise IOError("Couldn't open source file")
+        raise IOError(errorMessage(4))
     input = source.read()
     source.close()
     output = []
