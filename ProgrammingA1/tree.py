@@ -1,11 +1,7 @@
-'''
-CS 3210 - Principles of Programming Languages (Fall 2019)
-Programming Assignment 01
-September 29th, 2019
-Team:    @Abinet Kenore
-         @Rohit Shrestha
-profesor @Thyago tmota
-'''
+# CS3210 - Principles of Programming Languages - Fall 2019
+# A tree data-structure
+# Author: Thyago tmota
+# Date: 09/09/19
 
 TAB = "   "
 
@@ -26,7 +22,7 @@ class Tree:
                 if isinstance(child, Tree):
                     child.print(tab)
                 else:
-                    print(tab + child
+                    print(tab + child)
 
 # main
 if __name__ == "__main__":

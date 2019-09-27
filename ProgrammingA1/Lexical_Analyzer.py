@@ -2,9 +2,9 @@
 CS 3210 - Principles of Programming Languages (Fall 2019)
 Programming Assignment 01
 September 29th, 2019
-Team:    Abinet Kenore
-         Rohit Shrestha
-
+Team:    @Abinet Kenore
+         @Rohit Shrestha
+profesor @Thyago tmota
 '''
 from enum import Enum
 import sys
@@ -17,7 +17,6 @@ class CharClass(Enum): # Ask what needs to be added
     OPERATOR   = 4
     PUNCTUATOR = 5
     QUOTE      = 6
-    #BUILTIN    = 7
     BLANK      = 7
     OTHER      = 8
 
@@ -31,14 +30,11 @@ def getChar(input):
     if c.isdigit():
         return (c, CharClass.DIGIT)
     if c == '"':
-        return (c, CharClass.QUOTE) #Added <>=
-    if c in ['+', '-', '*','>', '=', '>','>=', '<', '<=' ]:
+        return (c, CharClass.QUOTE)
+    if c in ['+', '-', '*','>', '=', '>','>=', '<', '<=']:
         return (c, CharClass.OPERATOR)
     if c in ['.', ':', ',', ';']:
         return (c, CharClass.PUNCTUATOR)
-
-    # if c in ['do', 'if', 'else', 'begin', 'end','while', 'read', 'write','then','var',]:
-    #     return (c, CharClass.BUILTIN)
 
     if c in [' ', '\n', '\t']:
         return (c, CharClass.BLANK)
@@ -92,41 +88,26 @@ class Token(Enum):
     VAR            = 27
     WHILE          = 28
     WRITE          = 29
-    COMMA          =  30
 
     # lexeme to token conversion
 lookup = {
-        "+"      : Token.ADDITION,
-        "-"      : Token.SUBTRACTION,
-        "*"      : Token.MULTIPLICATION,
-        "."      : Token.PERIOD,
-        ":"      : Token.COLON,
-        ""      : Token.COMMA,
-        ";"      : Token.SEMICOLON,
-        ">"      : Token.GREATER,
-        ">="     : Token.GREATER_EQUAL,
-        "="      : Token.EQUAL,
-        "<="     : Token.LESS_EQUAL,
-        "<"      : Token.LESS,
-        "if"     : Token.IF,
-        "else"  : Token.ELSE,
-        "true"   : Token.TRUE,
-        "false"  : Token.FALSE,
-        "begin"  : Token.BEGIN,
-        "end"    : Token.END,
-        "do"     : Token.DO,
-        "while"  : Token.WHILE,
-        "write"  : Token.WRITE,
-        "program" : Token.PROGRAM,
-        "read"   : Token.READ,
-        "var"    : Token.VAR,
-        "then"   : Token.THEN
-      # TODO  ASSIGNMENT,BOOLEAN_TYPE,IDENTIFIER,
-      #INTEGER_LITERAL,INTEGER_TYPE
+        "+"      : Token.ADDITION,      "-"      : Token.SUBTRACTION,
+        "*"      : Token.MULTIPLICATION,     "."      : Token.PERIOD,
+        ":"      : Token.COLON,           ";"      : Token.SEMICOLON,
+        ">"      : Token.GREATER,     ">="     : Token.GREATER_EQUAL,
+        "="      : Token.EQUAL,          "<="     : Token.LESS_EQUAL,
+        "<"      : Token.LESS,"then"   : Token.THEN,
+        "if"     : Token.IF,    "else"  : Token.ELSE,
+        "true"   : Token.TRUE, "false"  : Token.FALSE,
+        "begin"  : Token.BEGIN,  "end"    : Token.END,
+        "do"     : Token.DO,   "while"  : Token.WHILE,
+        "write"  : Token.WRITE,"program" :Token.PROGRAM,
+        "read"   : Token.READ,      "var"    : Token.VAR
     }
 
 # Error Table
 class Error(Enum):
+
     '''Source file missing
     Couldn’t open source file
     Lexical error
@@ -138,13 +119,35 @@ class Error(Enum):
     Data type expected
     Identifier or literal value expected
     Syntax error'''
-
+def errorMessage(ecode):
+    msg = "Error " + str(ecode).zfill(2) + ": "
+    if ecode == 1 :
+        return msg + "Source file missing "
+    if ecode == 2:
+        return msg + "Couldn’t open source file "
+    if ecode == 3:
+        return msg + "Lexical error "
+    if ecode == 4:
+        return msg + "Couldn’t open grammar file "
+    if ecode == 6:
+        return msg + "EOF expected "
+    if ecode == 7:
+        return msg + "Identifier expected "
+    if ecode == 8:
+        return msg + "Special word missing "
+   if ecode == 9:
+       return msg + "Symbol missing "
+   if ecode == 10:
+       return msg + "Data type expected "
+    if ecode == 11:
+        return msg + "identifier or literal value expected "
+    return msg + "Syntax error "
 # Returns the next (lexeme, token) pair or None if EOF is reached
 def lex(input):
     input = getNonBlank(input)
     c, charClass = getChar(input)
-    # print(c, end = " ")
-    # print(charClass)
+    #print(c, end = " ")
+    #print(charClass)
     lexeme = ""
 
     # check EOF first
@@ -179,6 +182,7 @@ def lex(input):
 
     # TODO: anything else, raise an exception
     raise Exception("LA Not Found")
+    # Here
 # Main
 if __name__ == "__main__":
 

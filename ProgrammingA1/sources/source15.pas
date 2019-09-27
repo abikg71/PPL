@@ -11,7 +11,7 @@ program Source15
     read y;
     if x > y then
         result := true
-    else    
+    else
         result := false;
     write result
 

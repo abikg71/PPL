@@ -32,7 +32,7 @@ def loadTable(input):
     actions = {}
     gotos = {}
     header = input.readline().strip().split(",")
-    end = header.index("$")
+    end = header.index(".")
     tokens = []
     for field in header[1:end + 1]:
         tokens.append(field)
@@ -160,14 +160,14 @@ if __name__ == "__main__":
 
     input = open("slr_table.csv", "rt")
     actions, gotos = loadTable(input)
-    # printActions(actions)
-    # printGotos(gotos)
+    printActions(actions)
+    printGotos(gotos)
     input.close()
 
     # in the beginning we will write the input as a sequence of terminal
     #symbols, ending by $
     # later we will integrate this code with the lexical analyzer
-    input = [ 'l', '+', 'i', '/', 'l', '*', 'l', '$' ]
+    input = [ 'l', '+', 'i', '/', 'l', '*', 'l' "."]#, '$'
 
     # tree building update
     tree = parse(input, grammar, actions, gotos)
