@@ -108,17 +108,6 @@ lookup = {
 # Error Table
 class Error(Enum):
 
-    '''Source file missing
-    Couldn’t open source file
-    Lexical error
-    Couldn’t open grammar file
-    EOF expected
-    Identifier expected
-    Special word missing
-    Symbol missing
-    Data type expected
-    Identifier or literal value expected
-    Syntax error'''
 def errorMessage(ecode):
     msg = "Error " + str(ecode).zfill(2) + ": "
     if ecode == 1 :
@@ -142,6 +131,7 @@ def errorMessage(ecode):
     if ecode == 11:
         return msg + "identifier or literal value expected "
     return msg + "Syntax error "
+    
 # Returns the next (lexeme, token) pair or None if EOF is reached
 def lex(input):
     input = getNonBlank(input)

@@ -1,7 +1,11 @@
-# CS3210 - Principles of Programming Languages - Fall 2019
-# A tree data-structure
-# Author: Thyago tmota
-# Date: 09/09/19
+'''
+CS 3210 - Principles of Programming Languages (Fall 2019)
+Programming Assignment 01
+September 29th, 2019
+Team:    @Abinet Kenore
+         @Rohit Shrestha
+profesor @Thyago tmota
+'''
 
 TAB = "   "
 
