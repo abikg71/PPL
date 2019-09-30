@@ -32,9 +32,9 @@ def loadTable(input):
     actions = {}
     gotos = {}
     header = input.readline().strip().split(",")
-    end = header.index(".")
+    end = header.index("$")
     tokens = []
-    for field in header[1:end + 1]:
+    for field in header[1:end]:
         tokens.append(field)
         # tokens.append(int(field))
     variables = header[end + 1:]
@@ -51,7 +51,7 @@ def loadTable(input):
         for i in range(len(variables)):
             variable = variables[i]
             key = (state, variable)
-            value = row[i + len(tokens) + 1]
+            value = row[i + len(tokens) + 1] # +1
             if len(value) == 0:
                 value = None
             gotos[key] = value
@@ -160,22 +160,22 @@ if __name__ == "__main__":
 
     input = open("slr_table.csv", "rt")
     actions, gotos = loadTable(input)
-    printActions(actions)
-    printGotos(gotos)
+    #printActions(actions)
+    #printGotos(gotos)
     input.close()
 
     # in the beginning we will write the input as a sequence of terminal
     #symbols, ending by $
     # later we will integrate this code with the lexical analyzer
-    input = [ 'l', '+', 'i', '/', 'l', '*', 'l' "."]#, '$'
+    input = [ 'l', '+', '-','i','l', '*', 'l', '$']#, '$'
 
     # tree building update
     tree = parse(input, grammar, actions, gotos)
     if tree:
         print("Input is syntactically correct!")
         print("\t")
-        print("Parse Tree:")
-        tree.print("")
+        #print("Parse Tree:")
+        #tree.print("")
     else:
         print("Code has syntax errors!")
     print("\t")
