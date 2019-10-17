@@ -1,11 +1,12 @@
--- CS3210 - Principles of Programming Languages - Fall 2019
--- Programming Assignment 02 - A Sudoku Solver
--- Author(s):
+{-- CS3210 - Principles of Programming Languages - Fall 2019
+Programming Assignment 02 - A Sudoku Solver
+Author(s):
           @Abinet Kenore
           @Rohit Shrestha
-profesor  @Thyago tmota
-Date Nov 03, 2019
 
+Professor  @Thyago tmota
+Date Nov 03, 2019
+--}
 import System.Environment
 import System.IO
 import Data.List
