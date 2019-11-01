@@ -51,7 +51,8 @@ toIntList s = [ toInt [c] | c <- s ]
 --   [0,0,0,0,8,0,0,7,9] ]
 -- hint: use lines to convert the string into a list of strings, and then apply
 -- toIntList on each of the strings of the list to return the board
--- getBoard :: [Char] -> Board
+getBoard :: [Char] -> Board
+getBoard s = map toIntList(lines s)
 
 -- TODO #2
 -- name: getNRows
@@ -373,10 +374,16 @@ toIntList s = [ toInt [c] | c <- s ]
 main = do
 
   -- TODO #17: validate the command-line and get the file name containing the board
+  putStr "Enter the filename containing the sudoku board: "
+  fileBoard <- getLine
 
   -- TODO #18: read the contents of the board file into a string
+  rawContents <- readFile fileBoard
+  print(rawContents)
 
   -- TODO #19: create a board from the string board (hint: use getBoard)
+  let board = getBoard rawContents
+  print(board)
 
   -- TODO #20: use solve to find the solutions, disconsidering the ones that are [[]]
 
