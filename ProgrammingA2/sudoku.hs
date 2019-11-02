@@ -70,7 +70,8 @@ getBoard s = map toIntList(lines s)
 --   [0,0,0,4,1,9,0,0,5],
 --   [0,0,0,0,8,0,0,7,9] ] yields 9
 -- hint: use length
--- getNRows :: Board -> Int
+getNRows :: Board -> Int
+getNRows b = length(b)
 
 -- TODO #3
 -- name: getNCols
@@ -101,7 +102,10 @@ getBoard s = map toIntList(lines s)
 -- hint: use length to create a list with all the sizes of each row from
 --the board; then decide whether all of the rows have the same size, returning
 --that size if yes, or 0 otherwise
--- getNCols :: Board -> Int
+getNCols :: Board -> Int
+getNCols b
+   | all(== head[length n | n <- b]) [length n | n <- b] == True = head[length n | n <- b]
+   | otherwise = 0
 
 -- TODO #4
 -- name: getBox
@@ -384,6 +388,12 @@ main = do
   -- TODO #19: create a board from the string board (hint: use getBoard)
   let board = getBoard rawContents
   print(board)
+  
+  let nRows = getNRows board
+  print(nRows)
+  
+  let nCols = getNCols board
+  print(nCols)
 
   -- TODO #20: use solve to find the solutions, disconsidering the ones that are [[]]
 
