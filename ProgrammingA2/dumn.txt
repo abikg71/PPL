@@ -1,0 +1,23 @@
+
+{--  rawContents <- readFile "text.txt"
+  let rawContentsByLine = lines rawContents
+  let contents = [ splitAt "\n" content | content <- rawContentsByLine ]
+  let rd = [ (content!!0 :: Board, read (content!!1) :: Sequence) | content <- contents ]
+  print (rd)
+--}
+
+(--
+type Sequence = [Int]
+type Board    = [Sequence]
+
+toInt :: Board -> Sequence
+toInt rd ln
+      | elem ln rd = rd
+      | otherwise = ln : rd
+      -- }
+
+let str = contents :: Integer
+      print(contents)
+      print(str)
+      let x = read "271" :: Integer
+      print(x)

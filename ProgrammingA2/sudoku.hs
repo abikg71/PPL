@@ -388,10 +388,10 @@ main = do
   -- TODO #19: create a board from the string board (hint: use getBoard)
   let board = getBoard rawContents
   print(board)
-  
+
   let nRows = getNRows board
   print(nRows)
-  
+
   let nCols = getNCols board
   print(nCols)
 
