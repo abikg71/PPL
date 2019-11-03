@@ -6,6 +6,7 @@ Author(s):
 
 Professor  @Thyago tmota
 Date Nov 03, 2019
+
 --}
 import System.Environment
 import System.IO
@@ -187,7 +188,7 @@ getNCols b
 --   [0,0,0,8,0,0,7,9] ] returns False
 -- hint: use getNRows and getNCols
 isGridValid :: Board -> Bool
-isGridValid b 
+isGridValid b
    | getNRows b == getNCols b = True
    | otherwise = False
 
@@ -285,7 +286,7 @@ areColsValid b = areRowsValid (transpose b)
 -- hint: use concatenation, take, and drop
 setRowAt :: Sequence -> Int -> Int -> Sequence
 setRowAt seq ind val
-   | seq !! ind == 0 = (take ind seq )++ (val:drop (ind + 1) seq) 
+   | seq !! ind == 0 = (take ind seq )++ (val:drop (ind + 1) seq)
    | otherwise = seq
 
 -- TODO #15
@@ -410,16 +411,16 @@ main = do
 
   let nCols = getNCols board
   print(nCols)
-  
+
   let rvs = areRowsValid board
   print(rvs)
-  
+
   let cvs = areColsValid board
   print(cvs)
-  
+
   let sra = setRowAt [1, 2, 3, 0, 0, 5,7,0] 6 9
   print(sra)
-  
+
   let sba = setBoardAt board 1 1 4
   print(sba)
 
