@@ -186,7 +186,10 @@ getNCols b
 --   [0,0,4,1,9,0,0,5],
 --   [0,0,0,8,0,0,7,9] ] returns False
 -- hint: use getNRows and getNCols
--- isGridValid :: Board -> Bool
+isGridValid :: Board -> Bool
+isGridValid b 
+   | getNRows b == getNCols b = True
+   | otherwise = False
 
 -- TODO #7
 -- name: isSequenceValid
@@ -200,7 +203,10 @@ getNCols b
 -- different than zero; then determine whether there are digits that repeats
 -- in the created list
 
--- isSequenceValid :: Sequence -> Bool
+isSequenceValid :: Sequence -> Bool
+isSequenceValid seq
+   | length (nub [x | x <- seq, x /= 0]) == length [x | x <- seq, x /= 0] = True
+   | otherwise = False
 
 -- TODO #8
 -- name: areRowsValid
@@ -210,7 +216,10 @@ getNCols b
 -- input: a board
 -- output: True/False
 -- hint: use list comprehension and isSequenceValid
--- areRowsValid :: Board -> Bool
+areRowsValid :: Board -> Bool
+areRowsValid b
+  | all (==True) (map isSequenceValid[x | x <- b]) = True
+  | otherwise = False
 
 -- TODO #9
 -- name: areColsValid
@@ -220,7 +229,8 @@ getNCols b
 -- input: a board
 -- output: True/False
 -- hint: use areRowsValid of the transposed board
--- areColsValid :: Board -> Bool
+areColsValid :: Board -> Bool
+areColsValid b = areRowsValid (transpose b)
 
 -- TODO #10
 -- name: areBoxesValid
@@ -273,7 +283,10 @@ getNCols b
 -- example 1: setRowAt [1, 2, 3, 0, 4, 5] 3 9 yields [1,2,3,9,4,5]
 -- example 2: setRowAt [1, 2, 3, 8, 4, 5] 3 9 yields [1,2,3,8,4,5]
 -- hint: use concatenation, take, and drop
--- setRowAt :: Sequence -> Int -> Int -> Sequence
+setRowAt :: Sequence -> Int -> Int -> Sequence
+setRowAt seq ind val
+   | seq !! ind == 0 = (take ind seq )++ (val:drop (ind + 1) seq) 
+   | otherwise = seq
 
 -- TODO #15
 -- name: setBoardAt
@@ -304,7 +317,10 @@ getNCols b
 --   [0,0,0,4,1,9,0,0,5],
 --   [0,0,0,0,8,0,0,7,9] ]
 -- hint: use concatenation and setRowAt
--- setBoardAt :: Board -> Int -> Int -> Int -> Board
+setBoardAt :: Board -> Int -> Int -> Int -> Board
+setBoardAt b i j val
+   | (b !! i) !! j == 0 = (take i b) ++ (setRowAt (b !! i) j val):drop (i+1) b
+   | otherwise = b
 
 -- TODO #16
 -- name: buildChoices
@@ -394,6 +410,18 @@ main = do
   
   let nCols = getNCols board
   print(nCols)
+  
+  let rvs = areRowsValid board
+  print(rvs)
+  
+  let cvs = areColsValid board
+  print(cvs)
+  
+  let sra = setRowAt [1, 2, 3, 0, 0, 5,7,0] 6 9
+  print(sra)
+  
+  let sba = setBoardAt board 1 1 4
+  print(sba)
 
   -- TODO #20: use solve to find the solutions, disconsidering the ones that are [[]]
 
