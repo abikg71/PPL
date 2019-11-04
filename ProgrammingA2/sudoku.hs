@@ -127,7 +127,21 @@ getNCols b
 -- hint: use list comprehension to filter the rows of the target box; then
 -- transpose what you got and apply the same reasoning to filter the columns;
 -- use concat to return the sequence
--- getBox :: Board -> Int -> Int -> Sequence
+getBox :: Board -> Int -> Int -> Sequence
+getBox b i j 
+   | (i == 0) && (j == 0) = [x | x <- [(transpose (b) !! l) !! m | l <- [0..2] , m <- [0..2]]]
+   | (i == 1) && (j == 0) = [x | x <- [(transpose (b) !! l) !! m | l <- [0..2] , m <- [3..5]]]
+   | (i == 2) && (j == 0) = [x | x <- [(transpose (b) !! l) !! m | l <- [0..2] , m <- [6..8]]]
+   
+   | (i == 0) && (j == 1) = [x | x <- [(transpose (b) !! l) !! m | l <- [3..5] , m <- [0..2]]]
+   | (i == 1) && (j == 1) = [x | x <- [(transpose (b) !! l) !! m | l <- [3..5] , m <- [3..5]]]
+   | (i == 2) && (j == 1) = [x | x <- [(transpose (b) !! l) !! m | l <- [3..5] , m <- [6..8]]]
+   
+   | (i == 0) && (j == 2) = [x | x <- [(transpose (b) !! l) !! m | l <- [6..8] , m <- [0..2]]]
+   | (i == 1) && (j == 2) = [x | x <- [(transpose (b) !! l) !! m | l <- [6..8] , m <- [3..5]]]
+   | (i == 2) && (j == 2) = [x | x <- [(transpose (b) !! l) !! m | l <- [6..8] , m <- [6..8]]]
+   
+   | otherwise = []
 
 -- TODO #5
 -- name: getEmptySpot
@@ -148,7 +162,8 @@ getNCols b
 --   [0,0,0,0,8,0,0,7,9] ] yields (0,2)
 -- hint: use list comprehension to generate all the coordinates of the board
 -- that are empty; use head to return the first coordinate of your list
--- getEmptySpot :: Board -> (Int, Int)
+getEmptySpot :: Board -> (Int, Int)
+getEmptySpot b = head [(i,j) | i <- [0..((getNRows b)-1)] , j <- [0..((getNCols b) -1)] , ((b !! i) !! j) == 0] 
 
 -- ***** PREDICATE FUNCTIONS *****
 
@@ -241,7 +256,10 @@ areColsValid b = areRowsValid (transpose b)
 -- input: a board
 -- output: True/False
 -- hint: use list comprehension, isSequenceValid, and getBox
--- areBoxesValid :: Board -> Bool
+areBoxesValid :: Board -> Bool
+areBoxesValid b 
+   | all (==True) (map isSequenceValid [x | x <- [getBox b i j | i <- [0..2] , j <- [0..2]]]) = True
+   | otherwise = False
 
 -- TODO #11
 -- name: isValid
@@ -250,7 +268,11 @@ areColsValid b = areRowsValid (transpose b)
 -- input: a board
 -- output: True/False
 -- hint: use isGridValid, areRowsValid, areColsValid, and areBoxesValid
--- isValid :: Board -> Bool
+isValid :: Board -> Bool
+isValid b 
+   | (isGridValid b) && (areRowsValid b) && 
+      (areColsValid b) && (areBoxesValid b) = True
+   | otherwise = False
 
 -- TODO #12
 -- name: isCompleted
@@ -260,7 +282,10 @@ areColsValid b = areRowsValid (transpose b)
 -- input: a board
 -- output: True/False
 -- hint: use list comprehension and the elem function
--- isCompleted :: Board -> Bool
+isCompleted :: Board -> Bool
+isCompleted b
+   | not (elem 0 [x | x <- concat b]) = True
+   | otherwise = False
 
 -- TODO #13
 -- name: isSolved
@@ -268,7 +293,10 @@ areColsValid b = areRowsValid (transpose b)
 -- or not; a board is solved if it is completed and still valid
 -- input: a board
 -- output: True/False
--- isSolved :: Board -> Bool
+isSolved :: Board -> Bool
+isSolved b 
+   | ((isValid b)  && (isCompleted b)) = True
+   | otherwise = False
 
 -- ***** SETTER FUNCTIONS *****
 
@@ -372,7 +400,8 @@ setBoardAt b i j val
 --   [0,0,0,0,8,0,0,7,9] ]
 -- ]
 -- hint: use list comprehension and the function setBoardAt
--- buildChoices :: Board -> Int -> Int -> [Board]
+buildChoices :: Board -> Int -> Int -> [Board]
+buildChoices b i j = [x|x <- [setBoardAt b i j y | y <- [1..9]]]
 
 -- name: solve
 -- description: given a board, finds all possible solutions (note that dead
@@ -380,16 +409,16 @@ setBoardAt b i j val
 -- input: a board
 -- output: a list of boards from the original board
 -- note: this code is given to you (just uncomment it when you are ready to test the solver)
--- solve :: Board -> [Board]
--- solve board
---   | isSolved board = [board]
---   | isCompleted board = [[[]]]
---   | not (isValid board) = [[[]]]
---   | otherwise = concat [ solve choice | choice <- buildChoices board i j ]
---     where
---       emptySpot = getEmptySpot board
---       i = fst emptySpot
---       j = snd emptySpot
+ solve :: Board -> [Board]
+ solve board
+   | isSolved board = [board]
+   | isCompleted board = [[[]]]
+   | not (isValid board) = [[[]]]
+   | otherwise = concat [ solve choice | choice <- buildChoices board i j ]
+     where
+       emptySpot = getEmptySpot board
+       i = fst emptySpot
+       j = snd emptySpot
 
 -- program starts here
 main = do
@@ -400,32 +429,61 @@ main = do
 
   -- TODO #18: read the contents of the board file into a string
   rawContents <- readFile fileBoard
-  print(rawContents)
-
+  
   -- TODO #19: create a board from the string board (hint: use getBoard)
   let board = getBoard rawContents
-  print(board)
+  
+  --testing the functions to check if it yields expected results
+  --print(rawContents)
+  --print(board)
+  
+  --let nRows = getNRows board
+  --print(nRows)
+  
+  --let nCols = getNCols board
+  --print(nCols)
+  
+  --let gb = getBox board 2 1
+  --print(gb)
+  
+  --let av = getEmptySpot board
+  --print(av)
+  
+  --let gv = isGridValid board
+  --print gv
+  
+  --let sv = [map isSequenceValid [x | x <- board]]
+  --print sv
 
-  let nRows = getNRows board
-  print(nRows)
+  --let rvs = areRowsValid board
+  --print(rvs)
+  
+  --let cvs = areColsValid board
+  --print(cvs)
+  
+  --let abv = [map isSequenceValid [x | x <- [getBox board i j | i <- [0..2] , j <- [0..2]]]]
+  --print(abv)
+  
+  --let isCom = isCompleted board
+  --print(isCom)
+  
+  --let sra = setRowAt [1, 2, 3, 0, 0, 5,7,0] 6 9
+  --print(sra)
+  
+  --let sba = setBoardAt board 1 1 4
+  --print(sba)
+  
+  --let iv = isValid board
+  --print(iv)
+  
 
-  let nCols = getNCols board
-  print(nCols)
-
-  let rvs = areRowsValid board
-  print(rvs)
-
-  let cvs = areColsValid board
-  print(cvs)
-
-  let sra = setRowAt [1, 2, 3, 0, 0, 5,7,0] 6 9
-  print(sra)
-
-  let sba = setBoardAt board 1 1 4
-  print(sba)
+  --let bc = buildChoices board 0 3 
+  --print(bc)
 
   -- TODO #20: use solve to find the solutions, disconsidering the ones that are [[]]
-
+  let solution = [x | x <- solve board, x /= [[]]]
   -- TODO #21: print the solutions found
-
+  putStr "The solution of the sudoku board: "
+  print solution
+  
   print "Done!"
