@@ -1,24 +1,5 @@
 The following is the Disease and Its symptoms.
-Reference: https://www.medicinenet.com/symptoms_and_signs/symptomchecker.htm#introView
-
-Allergy: Symptoms & Signs
-nasal congestion, itchy and watery eyes, sneezing, stuffy or runny nose, scratchy or sore throat, throat clearing, cough from postnasal drip.
-
-Flu (Influenza): Symptoms & Signs 
-fever, chills, cough, malaise, and headache.
-
-Anxiety: Symptoms & Signs
-palpitations, sweating, irritability, feelings of stress.
-
-Stroke: Symptoms & Signs
-numbness, weakness, tingling, or vision loss or changes,, headache, nausea, and vomiting.
-
-
-Diabetes: Symptoms & Signs
-dehydration, hunger, increased urination, increased thirst, weight loss or gain, fatigue, nausea, vomiting, blurred vision
-
-FROM webmd site.
-
+FROM webmd website.
 https://symptoms.webmd.com/default.htm#/conditions
 
 My Symptoms. 
@@ -65,38 +46,7 @@ dry cough
 nasal congestion
 
 
-
-Please tell us more
-Skip this section 
-Which symptom is bothering you the most?
-throat irritation
-bloating
-cough
-diarrhea
-dizziness
-fatigue
-nausea
-muscle cramp
-headache
-fever
-vomiting
-itching nose
-profound exhaustion or fatigue
-new headache
-muscle weakness
-sweating too much
-runny nose
-sneezing
-watery eyes
-eyelid feels scratchy
-dry cough
-nasal congestion
-
-
-
 Conditions that munches 
-
- RESULTS i
 Hay fever
 Strong match
 Influenza (flu) adults
@@ -150,8 +100,6 @@ Moderate match
 
 LOAD MORE CONDITIONS
 
-
-
 HAY FEVER
 Hay fever symptoms include sneezing, congestion, runny nose, watery and bloodshot eyes, plugged up feeling in ears, itchy eyes and nose, tiredness, cough, temporary loss of taste and smell, and trouble sleeping.
 
@@ -161,16 +109,12 @@ Mononucleosis symptoms include extreme tiredness, sore throat, fever, rash, loss
 
 Sinusitis symptoms may include sinus pain and tenderness, facial redness and swelling over sinuses, teeth pain, dizziness and poor balance, fatigue, eye pain, sinus congestion and drainage (may include pus and/or bloody mucus), and temporary loss of sense of taste and smell
 
-
 First Stage: Acute HIV Infection; => Headache, Fatigue, Aching muscles, Sore throat, Swollen lymph nodes,
 A red rash that doesn't itch, usually on your torso
 
 The symptoms of West Nile virus can include abdominal pain, diarrhea, fever, headache, muscle aches, loss of appetite, nausea, vomiting, rash, sore throat, and swollen lymph nodes. More severe symptoms include confusion, high fever, stiff neck, coma, muscle weakness, and convulsions.
 
-
 Peritonsillar Abscess => Symptoms: Sore throat with worse pain on one side, chills and fever, swollen and tender lymph nodes, trouble swallowing or speaking, muscle spasms in the jaw and neck, ear pain
-
-
 
 Erythema multiforme may cause lesions such as hives or blisters on the arms, hands, legs, feet, upper body, face, lips, eyes, and genitals. They may burn or itch. They may spread quickly or go away and then come back. Bull's-eye-shaped rings may appear, especially on the palms. Before the lesions develop, a person may have symptoms such as fever, itchiness, achy joints, irritated eyes, and a general sick feeling. Erythema multiforme major may cause sores that make it painful to eat or urinate.
 
@@ -178,11 +122,9 @@ DRUG ALLERGY:Skin rashes, hives, and itchy skin, congestion, and swelling of the
 
 Laryngitis symptoms include hoarseness and loss of voice. If caused by a cold or flu, other symptoms may occur including cough, swollen lymph nodes in the neck, fever, and sore throat.
 
-Tuberculosis
-A bad cough, coughing up blood, chest pain, night sweats, fever, chills, fatigue, loss of appetite, weight loss
+Tuberculosis A bad cough, coughing up blood, chest pain, night sweats, fever, chills, fatigue, loss of appetite, weight loss
 
 Peritonsillar Abscess: Sore throat with worse pain on one side, chills and fever, swollen and tender lymph nodes, trouble swallowing or speaking, muscle spasms in the jaw and neck, ear pain
-
 
 Poisoning can cause nausea, vomiting, drooling, dry mouth, changes in pupil size, rapid or slow breathing, pain, confusion, seizures, a metallic taste in the mouth, skin color changes, coma, and death.
 
@@ -194,7 +136,4 @@ Epiglottitis The first symptoms of epiglottitis are usually a high fever and sor
 
 Ebola is a rare but deadly virus that causes fever, body aches, and diarrhea, and sometimes bleeding inside and outside the body.
 
-Tonsillitis =>
-Severe or long-lasting sore throat, red tonsils with white or yellow spots, pain in the jaw or throat, difficulty swallowing, earache, headache, fever, bad breath, fatigue, drooling, mouth breathing, raspy voice
-
-
+Tonsillitis =>Severe or long-lasting sore throat, red tonsils with white or yellow spots, pain in the jaw or throat, difficulty swallowing, earache, headache, fever, bad breath, fatigue, drooling, mouth breathing, raspy voice

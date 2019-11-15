@@ -25,7 +25,7 @@ is_true(Qu):-
  
  % How we are going to implement
 
-diseases(influenza):- is_true(''), is_true('')             
+diseases(influenza):- is_true(''),            
 diseases(mononucleosis):- is_true('')                
 diseases(westNilevirus):- is_true('')             
 diseases(peritonsillarAbscess):- is_true('')         
@@ -41,7 +41,7 @@ diabetes(ebola):- is_true('')
 diseases(commoncold):- is_true('')
 diseases(hayFever):- is_true()                   
 diseases(sinusitis):- is_true('')
-diseases(poisoning):-  is_true('')                  
+diseases(poisoning):- is_true('')                  
 
 
 
@@ -54,7 +54,7 @@ diseases(poisoning):-  is_true('')
     is_true('has nausea '),
     is_true('hasmuscle cramp'),
     is_true('has headache'),
-    is_true(''),
+
     is_true('has vomiting'),
     is_true('has itching nose'),
     is_true(' has profound exhaustion or fatigue'),
@@ -68,27 +68,26 @@ diseases(poisoning):-  is_true('')
     is_true('has nasal congestion'),
 
 
- 
-
 % Conditions(diseases) that munches the given symptoms list .
  
-    diseases(mononucleosis
-    diseases(Acutesinusitis
-    diseases(adenovirusinfection
-    diseases(Strepthroat
-    disease( viralgastroenteritis
+    diseases(mononucleosis)
+    diseases(Acutesinusitis)
+    diseases(adenovirusinfection)
+    diseases(strepthroat)
+    disease(viralgastroenteritis)
     disease(chronicfatiguesyndromeCFIDS)
     disease(meningitis)
     disease(swineinfluenza)
     disease(laryngitis)
     disease(chronicsinusitis)
-    disease(erythema multiforme)
+    disease(erythemamultiforme)
     disease(drugallergy)
     disease(acute HIV infection)
-    disease(peritonsillar abscess)
+    disease(peritonsillarabscess)
     disease(poisoning)
-    disease(Sjogrens syndrome)
+    disease(sjogrenssyndrome)
     disease(tuberculosis)
     disease(bacterial meningitis)
-    disease(meningococcal meningitis)
+    disease(meningococcalmeningitis)
     disease(epiglottitis)
+    
