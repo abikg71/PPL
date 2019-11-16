@@ -7,6 +7,34 @@ Programming Assignment 03 - A Expert System
 % Date Nov 24, 2019
 %
 
+% Conditions(diseases) that munches the given symptoms list .
+/* Diseases needed to be tessted */
+
+ 
+diseases(mononucleosis)           :- mononucleosis, !.
+diseases(acutesinusitis)          :- acutesinusitis, !.
+diseases(adenovirusinfection)     :- adenovirusinfection, !.
+diseases(strepthroat)             :- strepthroat,!.
+disease(viralgastroenteritis)     :- viralgastroenteritis, !.
+disease(chronicfatiguesyndromeCFIDS) :- chronicfatiguesyndromeCFIDS,!.
+disease(meningitis)               :- meningitis, !.
+disease(swineinfluenza)           :- swineinfluenza, !.
+disease(laryngitis)               :- laryngitis, !.
+disease(chronicsinusitis)         :- chronicsinusitis,!.
+disease(erythemamultiforme)       :- erythemaMultiforme, !.
+disease(drugallergy)              :- drugAllergy,! .
+disease(acuteHIVinfection)        :- acuteHIVinfection, !.
+disease(peritonsillarabscess)     :- peritonsillarAbscess, !.
+disease(poisoning)                :- poisoning, !.
+disease(sjogrenssyndrome).        :- sjogrenssyndrome, ! .
+disease(tuberculosis)             :- tuberculosis, !.
+disease(bacterialmeningitis)      :- bacterialmeningitis, ! . 
+disease(meningococcalmeningitis)  :- meningococcalmeningitis, ! .
+disease(epiglottitis)              :- epiglottitis, ! .
+disease(unknown). 
+
+% Symptoms 
+
 
 :- dynamic fact/1.
 
@@ -68,25 +96,34 @@ diseases(poisoning):- is_true('')
     is_true('has nasal congestion'),
 
 
-% Conditions(diseases) that munches the given symptoms list .
- 
-    diseases(mononucleosis)
-    diseases(acutesinusitis)
-    diseases(adenovirusinfection)
-    diseases(strepthroat)
-    disease(viralgastroenteritis)
-    disease(chronicfatiguesyndromeCFIDS)
-    disease(meningitis)
-    disease(swineinfluenza)
-    disease(laryngitis)
-    disease(chronicsinusitis)
-    disease(erythemamultiforme)
-    disease(drugallergy)
-    disease(acuteHIVinfection)
-    disease(peritonsillarabscess)
-    disease(poisoning)
-    disease(sjogrenssyndrome)
-    disease(tuberculosis)
-    disease(bacterial meningitis)
-    disease(meningococcalmeningitis)
-    disease(epiglottitis)
+
+
+
+/* Ask questions */
+ask(Question) :-
+  write('Does the animal have the following attribute: '),
+  write(Question),
+  write('? '),
+  read(Response),
+  nl,
+  ( (Response == yes ; Response == y)
+    ->
+     assert(yes(Question)) ;
+     assert(no(Question)), fail).
+
+:- dynamic yes/1,no/1.
+
+/* How to verify something */
+verify(S) :-
+ (yes(S) 
+  ->
+  true ;
+  (no(S)
+   ->
+   fail ;
+   ask(S))).
+
+/* undo all yes/no assertions */
+undo :- retract(yes(_)),fail. 
+undo :- retract(no(_)),fail.
+undo.

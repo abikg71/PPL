@@ -1,5 +1,3 @@
-% istrue(Qu):- format('~w?~n'),[Q],read(yes).
-
 :- dynamic fact/1.
 
 is_true(Qu):-
