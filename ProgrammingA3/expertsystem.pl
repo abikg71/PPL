@@ -22,10 +22,14 @@ begin:-
     disease(typhoid) :- typhoid, !.
     disease(measles) :- measles, !.
     disease(malaria) :- malaria, !.
+    disease(laryngitis) :- laryngitis, ! .
+    disease(ebola) :- ebola, ! .
+    disease(tuberculosis) :- tuberculosis, ! .
+    disease(tonsillitis) :- tonsillitis, ! .
     disease(unknown). /* No diagnosis*/
     
 /* Disease Identification Rules */  
-cold :-
+cold :- %1
     symptom(headache),
     symptom(runny_nose),
     symptom(sneezing),
@@ -36,7 +40,17 @@ cold :-
     write('3: Nasal spray'), nl,
     write('Please weare warm cloths Because'), nl.
 
-flu :-
+tonsillitis:-  %2
+    symptom(fever),
+    symptom(headache),
+    symptom(fatigue),
+    symptom(bad_breath),
+    symptom(raspy_voice),
+    write('Advices and Sugestions:'), nl,
+    write('1: Drink hot ginger tea'), nl,
+    write('2: panadol/tab'), nl.
+   
+flu :- %3
     symptom(fever),
     symptom(headache),
     symptom(chills),
@@ -47,7 +61,7 @@ flu :-
     write('3: Zanamivir/tab'), nl,
     write('Please take a warm bath and do salt gargling '), nl.
 
-typhoid :-
+typhoid :- %4
     symptom(headache),
     symptom(abdominal_pain),
     symptom(poor_appetite),
@@ -59,7 +73,7 @@ typhoid :-
     write('4: Azithromycin/tab'), nl,
     write('Please do complete bed rest and take soft Diet '), nl.
 
-measles :-
+measles :- %5
     symptom(fever),
     symptom(runny_nose),
     symptom(rash),
@@ -71,7 +85,15 @@ measles :-
     write('4: Vitamin A'), nl,
     write('Please Get rest and use more liquid'), nl.
 
- malaria :-
+ebola :-  %6
+    symptom(fever),
+    symptom(body_aches),
+    symptom(diarrhea),
+    symptom(bleading),
+    write('Advices and Sugestions:'), nl,
+    write('Would you like to voluntar in the reasearch'), nl.
+
+ malaria :- %7
     symptom(fever),
     symptom(sweating),
     symptom(headache),
@@ -83,7 +105,23 @@ measles :-
     write('2: Qualaquin/tab'), nl,
     write('3: Plaquenil/tab'), nl,
     write('4: Mefloquine'), nl,
-    write('Please do not sleep in open air and cover your full skin '), nl.
+    write('Please do not sleep in open air and cover your full skin '), nl. 
+
+laryngitis :- %8 
+    symptom(cough),
+    symptom(fever),
+    symptom(sore_throat),
+    write('Advices and Sugestions:'), nl,
+    write('comming soon'), nl.
+tuberculosis :-  % 9
+    symptom(fever),
+    symptom(cough),
+    symptom(weight_loss),
+    symptom(weight_loss),
+    write('Advices and Sugestions:'), nl,
+    write('comming soon'), nl.
+
+
 
 /* How to ask questions */
 ask(Question) :-
