@@ -121,12 +121,10 @@ tuberculosis :-  % 9
     write('Advices and Sugestions:'), nl,
     write('comming soon'), nl.
 
-
-
 /* How to ask questions */
 ask(Question) :-
-    write('Welcome to the RA Clinic and I am Dr. Prolg: '), nl,
-    write(' I am going to ask questions about symptoms you have.'),
+    writeln('Welcome to the RA Clinic and I am Dr. Prolg: '), nl,
+    writeln(' I am going to ask questions about symptoms you have.'),
     write('Please answer yes. or no. Ready?'), nl,
     write('Does the patient have following symptom: '),
     write(Question),
