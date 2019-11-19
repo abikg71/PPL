@@ -1,4 +1,5 @@
 CS3210 - Principles of Programming Languages - Fall 2019(MSU Denver CO.)
+
 Author(s)
        @Abinet Kenore
        @Rohit Shrestha
@@ -25,6 +26,7 @@ Where n is for source1,2,….. .pas
 
 =>The instruction and detail info about this project can be found on ProgrammingA1.pdf file.
 => The short hand representation formula can be viewed on g_reference.txt file.
+
 
 ProgrammingA2
 This one done by Haskell and we programmed Sudoku game.  You can read more from ProgrammingA2.pdf file 
