@@ -10,12 +10,19 @@ Reference https://www.cpp.edu/~jrfisher/www/prolog_tutorial/2_17.html
 */
 
 begin:-
+    greeting,
     disease(Disease),
     write('I believe that the patient have: '),
     write(Disease), nl,
     write('TAKE CARE '),
     undo.
 
+greeting :-
+    write('Welcome to the RA Clinic and I am Dr. Prolg: '), nl,
+    write(' I am going to ask questions about symptoms you have.'),
+    write('Please answer yes. or no. Ready?'), 
+    nl.
+    
 /* Disease that should be tested */
     disease(cold) :- cold, !.
     disease(flu) :- flu, !.
@@ -123,9 +130,6 @@ tuberculosis :-  % 9
 
 /* How to ask questions */
 ask(Question) :-
-    writeln('Welcome to the RA Clinic and I am Dr. Prolg: '), nl,
-    writeln(' I am going to ask questions about symptoms you have.'),
-    write('Please answer yes. or no. Ready?'), nl,
     write('Does the patient have following symptom: '),
     write(Question),
     write('? '),
