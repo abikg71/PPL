@@ -11,6 +11,7 @@ Reference https://www.cpp.edu/~jrfisher/www/prolog_tutorial/2_17.html
 
 begin:-
     greeting,
+    ready,
     disease(Disease),
     write('I believe that the patient have: '),
     write(Disease), nl,
@@ -19,11 +20,13 @@ begin:-
 
 greeting :-
     write('Welcome to the RA Clinic and I am Dr. Prolg: '), nl,
-    write(' I am going to ask questions about symptoms you have.'),
-    write('Please answer yes. or no. Ready?'), 
-    nl.
-    
-/* Disease that should be tested */
+    writeln('I am going to ask questions about symptoms you have. '),
+    writeln('Please answer yes. or no. Ready?'), nl.
+
+ready :- 
+    write('Do you have: '), nl.
+
+/* Disease that should be tested */ 
     disease(cold) :- cold, !.
     disease(flu) :- flu, !.
     disease(typhoid) :- typhoid, !.
@@ -45,11 +48,11 @@ cold :- %1
     write('1: Tylenol/tab'), nl,
     write('2: panadol/tab'), nl,
     write('3: Nasal spray'), nl,
-    write('Please weare warm cloths Because'), nl.
+    write('Please weare warm cloths'), nl.
 
 tonsillitis:-  %2
-    symptom(fever),
     symptom(headache),
+    symptom(fever),
     symptom(fatigue),
     symptom(bad_breath),
     symptom(raspy_voice),
@@ -58,8 +61,8 @@ tonsillitis:-  %2
     write('2: panadol/tab'), nl.
    
 flu :- %3
-    symptom(fever),
     symptom(headache),
+    symptom(fever),
     symptom(chills),
     symptom(body_ache),
     write('Advices and Sugestions:'), nl,
@@ -70,9 +73,9 @@ flu :- %3
 
 typhoid :- %4
     symptom(headache),
+    symptom(fever),
     symptom(abdominal_pain),
     symptom(poor_appetite),
-    symptom(fever),
     write('Advices and Sugestions:'), nl,
     write('1: Chloramphenicol/tab'), nl,
     write('2: Amoxicillin/tab'), nl,
@@ -101,9 +104,9 @@ ebola :-  %6
     write('Would you like to voluntar in the reasearch'), nl.
 
  malaria :- %7
+    symptom(headache), 
     symptom(fever),
     symptom(sweating),
-    symptom(headache),
     symptom(nausea),
     symptom(vomiting),
     symptom(diarrhea),
@@ -115,11 +118,12 @@ ebola :-  %6
     write('Please do not sleep in open air and cover your full skin '), nl. 
 
 laryngitis :- %8 
-    symptom(cough),
     symptom(fever),
+    symptom(cough),
     symptom(sore_throat),
     write('Advices and Sugestions:'), nl,
     write('comming soon'), nl.
+
 tuberculosis :-  % 9
     symptom(fever),
     symptom(cough),
@@ -130,7 +134,6 @@ tuberculosis :-  % 9
 
 /* How to ask questions */
 ask(Question) :-
-    write('Does the patient have following symptom: '),
     write(Question),
     write('? '),
     read(Response), nl,
