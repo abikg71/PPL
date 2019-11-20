@@ -38,7 +38,7 @@ ready :-
     disease(sinusitis) :- sinusitis, ! .
     disease(tonsillitis) :- tonsillitis, ! .
     disease(hiv) :- hiv, ! .
-    disease(pneumonia) : - pneumonia, ! .
+    disease(pneumonia) :- pneumonia, ! .
     disease(westNilevirus) :- westNilevirus, !.
     disease(unknown). /* No diagnosis*/
     
@@ -137,8 +137,8 @@ tuberculosis :-  % 9
     write('comming soon'), nl.
 
 hiv :-          %10
-    symptom(Headache),
-    symptom(fatigue)
+    symptom(headache),
+    symptom(fatigue),
     symptom(aching_muscles), 
     symptom(sore_throat),
     write('Advices and Sugestions:'), nl,
