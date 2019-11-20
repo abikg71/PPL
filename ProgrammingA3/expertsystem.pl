@@ -35,7 +35,11 @@ ready :-
     disease(laryngitis) :- laryngitis, ! .
     disease(ebola) :- ebola, ! .
     disease(tuberculosis) :- tuberculosis, ! .
+    disease(sinusitis) :- sinusitis, ! .
     disease(tonsillitis) :- tonsillitis, ! .
+    disease(hiv) :- hiv, ! .
+    disease(pneumonia) : - pneumonia, ! .
+    disease(westNilevirus) :- westNilevirus, !.
     disease(unknown). /* No diagnosis*/
     
 /* Disease Identification Rules */  
@@ -131,6 +135,48 @@ tuberculosis :-  % 9
     symptom(weight_loss),
     write('Advices and Sugestions:'), nl,
     write('comming soon'), nl.
+
+hiv :-          %10
+    symptom(Headache),
+    symptom(fatigue)
+    symptom(aching_muscles), 
+    symptom(sore_throat),
+    write('Advices and Sugestions:'), nl,
+    write('comming soon'), nl.
+
+westNilevirus :-    %11
+    symptom(headache),
+    symptom(fever),
+    symptom(diarrhea),
+    symptom(loss_appitate),
+    symptom(rash),
+    symptom(nausea),
+    symptom(muscle_weakness),
+    symptom(coma),
+    write('Advices and Sugestions:'), nl,
+    write('comming soon'), nl.
+
+sinusitis :-        %12
+    symptom(facial_redness),
+    symptom(teeth_pain),
+    symptom(fatigue),
+    symptom(dizziness),
+    symptom(poor_balance),
+    symptom(eye_pain), 
+    symptom(facial_redness),
+    write('Advices and Sugestions:'), nl,
+    write('comming soon'), nl. 
+
+pneumonia:-
+    symptom(fever),
+    symptom(cough),
+    symptom(low_appitate),
+    symptom(felling_tired),
+    symptom(cheast_pain),
+    write('Advices and Sugestions:'), nl,
+    write('Amoxil'), nl,
+    write('ceftriaxone'), nl,
+    write('Avelox'), nl.
 
 /* How to ask questions */
 ask(Question) :-

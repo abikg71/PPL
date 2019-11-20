@@ -3,102 +3,58 @@ FROM webmd website.
 https://symptoms.webmd.com/default.htm#/conditions
 
 My Symptoms. 
-throat irritation
+    throat irritation
+    bloating
+    cough
+    diarrhea
+    dizziness
+    fatigue
+    nausea
+    muscle cramp
 
-bloating
+    headache
+    fever
+    vomiting
+    itching nose
+    profound exhaustion or fatigue
+    muscle weakness
+    sweating too much
 
-cough
-
-diarrhea
-
-dizziness
-
-fatigue
-
-nausea
-
-muscle cramp
-
-headache
-
-fever
-
-vomiting
-
-itching nose
-
-profound exhaustion or fatigue
-
-muscle weakness
-
-sweating too much
-
-runny nose
-
-sneezing
-
-watery eyes
-
-eyelid feels scratchy
-
-dry cough
-
-nasal congestion
+    runny nose
+    sneezing
+    watery eyes
+    eyelid feels scratchy
+    dry cough
+    nasal congestion
 
 
 Conditions that munches 
-Hay fever
-Strong match
-Influenza (flu) adults
-Strong match
-Mononucleosis
-Strong match
-Acute sinusitis
-Strong match
-Common cold
-Moderate match
-adenovirus infection
-Moderate match
-Strep throat
-Moderate match
-Viral gastroenteritis
-Moderate match
-Tonsillitis
-Moderate match
-Chronic fatigue syndrome (CFIDS)
-Moderate match
-West nile virus
-Moderate match
-Meningitis
-Moderate match
-swine influenza
-Moderate match
-Laryngitis
-Moderate match
-Chronic sinusitis
-Moderate match
-Erythema multiforme
-Moderate match
-Drug allergy
-Moderate match
-acute HIV infection
-Fair match
-Peritonsillar abscess
-Fair match
-Poisoning
-Moderate match
-Sjogren's syndrome
-Moderate match
-Tuberculosis
-Moderate match
-bacterial meningitis
-Moderate match
-meningococcal meningitis
-Moderate match
-Epiglottitis
-Moderate match
+    Hay fever
+    Influenza (flu) adults
+    Mononucleosis
+    Acute sinusitis
+    Common cold
+    adenovirus infection
+    Strep throat
+    Viral gastroenteritis
+    Tonsillitis
+    Chronic fatigue syndrome (CFIDS)
+    West nile virus
+    Meningitis
+    swine influenza
+    Laryngitis
+    Chronic sinusitis
+    Erythema multiforme
+    Drug allergy
+    acute HIV infectio
+    Peritonsillar absces
+    Poisoning
+    Sjogren's syndrome
+    Tuberculosis
+    bacterial meningitis
+    meningococcal meningitis
+    Epiglottitis
 
-LOAD MORE CONDITIONS
 
 HAY FEVER
 Hay fever symptoms include sneezing, congestion, runny nose, watery and bloodshot eyes, plugged up feeling in ears, itchy eyes and nose, tiredness, cough, temporary loss of taste and smell, and trouble sleeping.
