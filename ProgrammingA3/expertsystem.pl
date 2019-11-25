@@ -52,6 +52,9 @@ check :-
     disease(hiv) :- hiv, ! .
     disease(pneumonia) :- pneumonia, ! .
     disease(westNilevirus) :- westNilevirus, !.
+    disease(chronicsinusitis) :- chronicsinusitis, !.
+    disease(heart_attach) :- heart_attach, ! .
+
     disease(unknown) :- unknown, !. /* No Diagnosis*/
     
 /* Disease Identification Rules */
@@ -190,7 +193,28 @@ pneumonia:-     %13
     write('ceftriaxone'), nl,
     write('Avelox'), nl.
 
-unknown :-      %15
+
+chronicsinusitis :-    %14
+    symptom(bad_breath),
+    symptom(thoart_sorness),
+    symptom(exhaustion),
+    symptom(trouble_inSmelling),
+    symptom(discomfort),
+    write('Advices and Sugestions:'), nl,
+    write('ibuprofen (Advil) '), nl,
+    write('acetaminophen (Tylenol)'), nl. 
+
+heart_attach :-     %15
+    symptom(dizziness), 
+    symptom(cheast_pain),
+    symptom(shortness_of_breath),
+    symptom(pain_upperAbdoman),
+    write('Advices and Sugestions:'), nl,
+    write('Stop smoking if you smoke'), nl,
+    write('Do exericses'), nl,
+    write('Be safe!'), nl.
+
+unknown :-      
     write('Sorry!! I do not have all necessary information to figure out your disease.'), nl.
 
 renew :-
