@@ -10,12 +10,14 @@ Reference https://www.cpp.edu/~jrfisher/www/prolog_tutorial/2_17.html
 */
 
 begin:-
-    greeting,
-    ready,
-    disease(Disease),
-    write('I believe that the patient have: '),
-    write(Disease), nl,
-    write('TAKE CARE '),
+    repeat,
+        greeting,
+        ready,
+        disease(Disease),
+        write('I believe that the patient have: '),
+        write(Disease), nl,
+        write('TAKE CARE '), nl,
+        renew,
     undo.
 
 greeting :-
@@ -23,10 +25,20 @@ greeting :-
     writeln('I am going to ask questions about symptoms you have. '),
     writeln('Please answer yes. or no. Ready?'), nl.
 
-ready :- 
+ready :-
     write('Do you have: '), nl.
 
-/* Disease that should be tested */ 
+check :-
+    write('Did I get it right?'), nl,
+    read(Credible), nl,
+    ( (Credible == yes ; Credible == y)
+    ->
+    assert(yes(check));
+    assert(no(check)), fail).
+
+:- dynamic yes/1,no/1.
+
+/* Disease that should be tested */
     disease(cold) :- cold, !.
     disease(flu) :- flu, !.
     disease(typhoid) :- typhoid, !.
@@ -40,9 +52,9 @@ ready :-
     disease(hiv) :- hiv, ! .
     disease(pneumonia) :- pneumonia, ! .
     disease(westNilevirus) :- westNilevirus, !.
-    disease(unknown). /* No diagnosis*/
+    disease(unknown) :- unknown, !. /* No Diagnosis*/
     
-/* Disease Identification Rules */  
+/* Disease Identification Rules */
 cold :- %1
     symptom(headache),
     symptom(runny_nose),
@@ -52,7 +64,7 @@ cold :- %1
     write('1: Tylenol/tab'), nl,
     write('2: panadol/tab'), nl,
     write('3: Nasal spray'), nl,
-    write('Please weare warm cloths'), nl.
+    write('Please wear warm cloths'), nl.
 
 tonsillitis:-  %2
     symptom(headache),
@@ -63,7 +75,7 @@ tonsillitis:-  %2
     write('Advices and Sugestions:'), nl,
     write('1: Drink hot ginger tea'), nl,
     write('2: panadol/tab'), nl.
-   
+
 flu :- %3
     symptom(headache),
     symptom(fever),
@@ -108,7 +120,7 @@ ebola :-  %6
     write('Would you like to voluntar in the reasearch'), nl.
 
  malaria :- %7
-    symptom(headache), 
+    symptom(headache),
     symptom(fever),
     symptom(sweating),
     symptom(nausea),
@@ -119,9 +131,9 @@ ebola :-  %6
     write('2: Qualaquin/tab'), nl,
     write('3: Plaquenil/tab'), nl,
     write('4: Mefloquine'), nl,
-    write('Please do not sleep in open air and cover your full skin '), nl. 
+    write('Please do not sleep in open air and cover your full skin '), nl.
 
-laryngitis :- %8 
+laryngitis :- %8
     symptom(fever),
     symptom(cough),
     symptom(sore_throat),
@@ -139,7 +151,7 @@ tuberculosis :-  % 9
 hiv :-          %10
     symptom(headache),
     symptom(fatigue),
-    symptom(aching_muscles), 
+    symptom(aching_muscles),
     symptom(sore_throat),
     write('Advices and Sugestions:'), nl,
     write('comming soon'), nl.
@@ -162,12 +174,12 @@ sinusitis :-        %12
     symptom(fatigue),
     symptom(dizziness),
     symptom(poor_balance),
-    symptom(eye_pain), 
+    symptom(eye_pain),
     symptom(facial_redness),
     write('Advices and Sugestions:'), nl,
-    write('comming soon'), nl. 
+    write('comming soon'), nl.
 
-pneumonia:-
+pneumonia:-     %13
     symptom(fever),
     symptom(cough),
     symptom(low_appitate),
@@ -177,6 +189,19 @@ pneumonia:-
     write('Amoxil'), nl,
     write('ceftriaxone'), nl,
     write('Avelox'), nl.
+
+unknown :-      %15
+    write('Sorry!! I do not have all necessary information to figure out your disease.'), nl.
+
+renew :-
+    write('Do you wish to continue?'), nl,
+    write('Enter begin to continue: '), nl,
+    read(Continue), nl,
+    ( (Continue == begin )
+    ->
+    assert(begin(renew));
+    assert(no(renew)), fail).
+:- dynamic begin/1,no/1.
 
 /* How to ask questions */
 ask(Question) :-
@@ -189,7 +214,7 @@ ask(Question) :-
     assert(no(Question)), fail).
 
 :- dynamic yes/1,no/1.
-    
+
 /* How to symptom something */
 symptom(S) :-
     (yes(S) -> true ;
@@ -197,6 +222,6 @@ symptom(S) :-
     ask(S))).
 
 /* Undo all yes/no assertions */
-undo :- retract(yes(_)),fail.
-undo :- retract(no(_)),fail.
+undo :- retractall(yes(_)),fail.
+undo :- retractall(no(_)),fail.
 undo.
