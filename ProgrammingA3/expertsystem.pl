@@ -17,7 +17,7 @@ begin:-
         write('I believe that the patient have: '),
         write(Disease), nl,
         write('TAKE CARE '), nl,
-        renew,
+        askrenew,
     undo.
 
 greeting :-
@@ -27,16 +27,6 @@ greeting :-
 
 ready :-
     write('Do you have: '), nl.
-
-check :-
-    write('Did I get it right?'), nl,
-    read(Credible), nl,
-    ( (Credible == yes ; Credible == y)
-    ->
-    assert(yes(check));
-    assert(no(check)), fail).
-
-:- dynamic yes/1,no/1.
 
 /* Disease that should be tested */
     disease(cold) :- cold, !.
@@ -53,7 +43,7 @@ check :-
     disease(pneumonia) :- pneumonia, ! .
     disease(westNilevirus) :- westNilevirus, !.
     disease(chronicsinusitis) :- chronicsinusitis, !.
-    disease(heart_attach) :- heart_attach, ! .
+    disease(heart_attack) :- heart_attack, ! .
 
     disease(unknown) :- unknown, !. /* No Diagnosis*/
     
@@ -204,7 +194,7 @@ chronicsinusitis :-    %14
     write('ibuprofen (Advil) '), nl,
     write('acetaminophen (Tylenol)'), nl. 
 
-heart_attach :-     %15
+heart_attack :-     %15
     symptom(dizziness), 
     symptom(cheast_pain),
     symptom(shortness_of_breath),
@@ -216,16 +206,6 @@ heart_attach :-     %15
 
 unknown :-      
     write('Sorry!! I do not have all necessary information to figure out your disease.'), nl.
-
-renew :-
-    write('Do you wish to continue?'), nl,
-    write('Enter begin to continue: '), nl,
-    read(Continue), nl,
-    ( (Continue == begin )
-    ->
-    assert(begin(renew));
-    assert(no(renew)), fail).
-:- dynamic begin/1,no/1.
 
 /* How to ask questions */
 ask(Question) :-
@@ -239,6 +219,27 @@ ask(Question) :-
 
 :- dynamic yes/1,no/1.
 
+askrenew :-    
+    write('Do you wish to continue?'), nl,
+    write('Enter begin to continue.'), nl,
+    write('Any other input will halt the program'), nl,
+    write('Will require to enter ; or spacebar to proceed:'), nl,
+    read(Continue), nl,
+    ( (Continue == begin )
+    ->
+    assert(begin(askrenew));
+    writeln('Exiting'), halt(0)).
+
+:- dynamic begin/1,no/1.
+
+check :-
+    write('Did I get it right?'), nl,
+    read(Credible), nl,
+    ( (Credible == yes ; Credible == y)
+    ->
+    writeln('Nice!! I am awesome!!');
+    writeln('Sorry, I am trying but I do not have all the information.')).
+    
 /* How to symptom something */
 symptom(S) :-
     (yes(S) -> true ;
